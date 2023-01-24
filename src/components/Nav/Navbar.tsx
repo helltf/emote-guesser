@@ -4,20 +4,20 @@ import NavLink from "./NavLink";
 
 export default function Navbar() {
   return (
-    <nav className="w-full h-[80px] flex flex-row px-20 items-center justify-between bg-neutral-900">
-      <div className="flex flex-row h-[64px] align-middle gap-2">
+    <nav className="w-full h-[60px] flex flex-row px-20 items-center justify-between bg-neutral-900 border-b border-gray-500">
+      <div className="flex flex-row h-[48px] align-middle gap-2">
         <Image
           className=""
           src={icon}
           alt="emote guesser icon"
-          width="64"
-          height="64"
+          width="48"
+          height="48"
         ></Image>
-        <p className="text-5xl text-center align-middle text-purple-600 italic">
+        <p className="text-4xl text-center align-middle text-purple-600 italic leading-[48px]">
           Emote Guesser
         </p>
       </div>
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-row gap-7">
         <NavLink href="/play">Play</NavLink>
         <NavLink href="/about">About</NavLink>
         <NavLink href="/stats">Stats</NavLink>
