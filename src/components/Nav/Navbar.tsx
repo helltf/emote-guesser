@@ -18,7 +18,7 @@ export default function Navbar() {
           Emote Guesser
         </p>
       </div>
-      <div className="flex gap-7">
+      <div className="flex ">
         <div className="flex flex-row gap-7">
           <NavLink href="/play">Play</NavLink>
           <NavLink href="/about">About</NavLink>

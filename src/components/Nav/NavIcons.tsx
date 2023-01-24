@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NavIcons() {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 border-l-gray-500 border-l-2 ml-5 pl-5">
       <a href="https://github.com/helltf">
         <Image
           src="/github.png"
