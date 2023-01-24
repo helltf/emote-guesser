@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import icon from "../../../public/emote_guesser_icon.gif";
+import NavLink from "./NavLink";
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-gray-500 h-[80px] flex flex-row px-20 items-center justify-between">
+    <nav className="w-full h-[80px] flex flex-row px-20 items-center justify-between bg-neutral-900">
       <div className="flex flex-row h-[64px] align-middle gap-2">
         <Image
           className=""
@@ -13,14 +13,15 @@ export default function Navbar() {
           width="64"
           height="64"
         ></Image>
-        <p className="text-5xl text-center m-0 text-purple-700 italic">
+        <p className="text-5xl text-center align-middle text-purple-600 italic">
           Emote Guesser
         </p>
       </div>
-      <div>
-        <Link href="/play">Play</Link>
-        <Link href="/about">About</Link>
-        <Link href="/login">Login</Link>
+      <div className="flex flex-row gap-5">
+        <NavLink href="/play">Play</NavLink>
+        <NavLink href="/about">About</NavLink>
+        <NavLink href="/stats">Stats</NavLink>
+        <NavLink href="/login">Login</NavLink>
       </div>
     </nav>
   );
