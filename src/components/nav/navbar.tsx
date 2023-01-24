@@ -1,7 +1,7 @@
 import Image from "next/image";
 import icon from "../../../public/emote_guesser_icon.gif";
-import NavIcons from "./NavIcons";
-import NavLink from "./NavLink";
+import NavIcons from "./nav-icons";
+import NavLink from "./nav-link";
 
 export default function Navbar() {
   return (
@@ -20,8 +20,8 @@ export default function Navbar() {
       </div>
       <div className="flex ">
         <div className="flex flex-row gap-7">
+          <NavLink href="/">Home</NavLink>
           <NavLink href="/play">Play</NavLink>
-          <NavLink href="/about">About</NavLink>
           <NavLink href="/stats">Stats</NavLink>
           <NavLink href="/login">Login</NavLink>
         </div>
