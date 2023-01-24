@@ -1,5 +1,6 @@
 import Image from "next/image";
 import icon from "../../../public/emote_guesser_icon.gif";
+import NavIcons from "./NavIcons";
 import NavLink from "./NavLink";
 
 export default function Navbar() {
@@ -17,11 +18,16 @@ export default function Navbar() {
           Emote Guesser
         </p>
       </div>
-      <div className="flex flex-row gap-7">
-        <NavLink href="/play">Play</NavLink>
-        <NavLink href="/about">About</NavLink>
-        <NavLink href="/stats">Stats</NavLink>
-        <NavLink href="/login">Login</NavLink>
+      <div className="flex gap-7">
+        <div className="flex flex-row gap-7">
+          <NavLink href="/play">Play</NavLink>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/stats">Stats</NavLink>
+          <NavLink href="/login">Login</NavLink>
+        </div>
+        <div>
+          <NavIcons></NavIcons>
+        </div>
       </div>
     </nav>
   );
