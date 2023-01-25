@@ -1,7 +1,7 @@
-import Image from "next/image";
-import icon from "../../../public/emote_guesser_icon.gif";
-import NavIcons from "./nav-icons";
-import NavLink from "./nav-link";
+import Image from 'next/image';
+import icon from '../../../public/emote_guesser_icon.gif';
+import NavIcons from './nav-icons';
+import NavLink from './nav-link';
 
 export default function Navbar() {
   return (
