@@ -1,5 +1,5 @@
-import Navbar from "@/components/Nav/Navbar";
+import HomeComponent from '@/components/home/home';
 
 export default function Home() {
-  return <Navbar></Navbar>;
+  return <HomeComponent></HomeComponent>;
 }
