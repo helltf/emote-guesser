@@ -5,7 +5,7 @@ import NavLink from './nav-link';
 
 export default function Navbar() {
   return (
-    <nav className="w-full h-[60px] flex flex-row px-20 items-center justify-between bg-neutral-900 border-b border-gray-500">
+    <nav className="w-full h-[60px] flex flex-row px-28 items-center justify-between bg-neutral-900 border-b border-gray-500">
       <div className="flex flex-row h-[48px] align-middle gap-2">
         <Image
           className=""
