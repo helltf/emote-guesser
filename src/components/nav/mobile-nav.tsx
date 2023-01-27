@@ -1,11 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import NavIcons from "./nav-icons";
+import NavLinks from "./nav-links";
 
 export default function MobileNavbar() {
   const [isOpen, setOpen] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 768) {
+        setOpen(false);
+      }
+    });
+  });
+
   return (
-    <div onClick={() => setOpen(!isOpen)} className="md:hidden cursor-pointer">
-      {isOpen ? <OpenMenuIcon /> : <MenuIcon />}
+    <>
+      <div
+        onClick={() => setOpen(!isOpen)}
+        className="md:hidden cursor-pointer relative"
+      >
+        {isOpen ? <OpenMenuIcon /> : <MenuIcon />}
+      </div>
+      {isOpen ? <NavContent /> : <></>}
+    </>
+  );
+}
+
+function NavContent() {
+  return (
+    <div className="absolute top h-[calc(100vh-60px)] top-[60px] left-0 w-screen bg-neutral-700">
+      <div className="h-full w-full flex flex-col justify-end">
+        <div className="flex flex-col items-center gap-5 mb-5">
+          <NavLinks />
+        </div>
+        <div className="flex gap-5 justify-center mb-2">
+          <NavIcons />
+        </div>
+      </div>
     </div>
   );
 }
@@ -14,6 +45,7 @@ function MenuIcon() {
   return (
     <>
       <svg
+        className="transition"
         width="48"
         height="48"
         viewBox="0 0 24 24"
@@ -48,6 +80,7 @@ function MenuIcon() {
 function OpenMenuIcon() {
   return (
     <svg
+      className="transition"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
