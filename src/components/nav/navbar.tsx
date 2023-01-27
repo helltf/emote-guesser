@@ -14,8 +14,8 @@ export default function Navbar() {
         <div className="flex flex-row gap-7">
           <NavLinks></NavLinks>
         </div>
-        <div>
-          <NavIcons></NavIcons>
+        <div className="flex gap-3 border-l-gray-500 border-l-2 ml-5 pl-5">
+          <NavIcons />
         </div>
       </div>
     </nav>
