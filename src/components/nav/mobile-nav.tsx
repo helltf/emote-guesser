@@ -4,7 +4,7 @@ export default function MobileNavbar() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div onClick={() => setOpen(true)} className="md:hidden cursor-pointer">
+    <div onClick={() => setOpen(!isOpen)} className="md:hidden cursor-pointer">
       {isOpen ? <OpenMenuIcon /> : <MenuIcon />}
     </div>
   );
