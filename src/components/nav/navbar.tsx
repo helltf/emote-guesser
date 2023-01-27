@@ -12,7 +12,7 @@ export default function Navbar() {
       <MobileNavbar />
       <div className="md:flex hidden">
         <div className="flex flex-row gap-7">
-          <NavLinks></NavLinks>
+          <NavLinks />
         </div>
         <div className="flex gap-3 border-l-gray-500 border-l-2 ml-5 pl-5">
           <NavIcons />

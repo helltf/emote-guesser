@@ -12,11 +12,13 @@ export default function Hero() {
         height="128"
         src={typingGif}
       ></Image>
-      <div className="flex flex-col w-[420px]">
-        <h1 className="text-purple-600 text-8xl italic self-start font-serif">
+      <div className="flex flex-col w-44 sm:w-[420px]">
+        <h1 className="text-purple-600 text-4xl sm:text-8xl italic self-start font-serif">
           Emote
         </h1>
-        <h1 className="text-purple-600 text-8xl italic self-end"> Guesser</h1>
+        <h1 className="text-purple-600 text-4xl sm:text-8xl italic self-end">
+          Guesser
+        </h1>
       </div>
       <div className="flex gap-2">
         <HeroButton href="/play">Play a game</HeroButton>
