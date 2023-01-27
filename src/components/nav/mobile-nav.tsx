@@ -45,11 +45,10 @@ function MenuIcon() {
   return (
     <>
       <svg
-        className="transition"
+        className="transition "
         width="48"
         height="48"
         viewBox="0 0 24 24"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -84,6 +83,7 @@ function OpenMenuIcon() {
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
+      fill="#666666"
       width="48"
       height="48"
       viewBox="0 0 24 24"
