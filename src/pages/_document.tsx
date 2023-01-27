@@ -1,6 +1,6 @@
-import Footer from '@/components/footer/footer';
-import Navbar from '@/components/nav/navbar';
-import { Html, Head, Main, NextScript } from 'next/document';
+import Footer from "@/components/footer/footer";
+import Navbar from "@/components/nav/navbar";
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
