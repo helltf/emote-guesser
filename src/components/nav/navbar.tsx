@@ -5,7 +5,7 @@ import NavLogo from "./nav-logo";
 
 export default function Navbar() {
   return (
-    <nav className="w-full h-[60px] flex flex-row px-28 items-center justify-between bg-neutral-900 border-b border-gray-500">
+    <nav className="w-full h-[60px] flex flex-row px-2 items-center justify-between bg-neutral-900 border-b border-gray-500 xl:px-28 md:px-6">
       <div className="flex flex-row h-[48px] align-middle gap-2">
         <NavLogo />
       </div>
