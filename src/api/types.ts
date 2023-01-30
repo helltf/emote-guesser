@@ -13,3 +13,16 @@ export class ResultError {
     this.error = error;
   }
 }
+
+enum EmoteType {
+  SEVENTV = "seventv",
+  BTTV = "BTTV",
+  FFZ = "FFZ",
+}
+
+export type EmoteInfo = {
+  id: string;
+  name: string;
+  displayName?: string;
+  type: EmoteType;
+};
