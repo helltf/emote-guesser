@@ -14,8 +14,8 @@ export class ResultError {
   }
 }
 
-enum EmoteType {
-  SEVENTV = "seventv",
+export enum EmoteType {
+  SEVENTV = "SEVENTV",
   BTTV = "BTTV",
   FFZ = "FFZ",
 }

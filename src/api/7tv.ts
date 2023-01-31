@@ -1,18 +1,18 @@
-import { EmoteInfo, EmoteType, Ok, Result, ResultError } from "./types";
+import { EmoteInfo, EmoteType, ResultError } from "./types";
 import { request } from "./util";
 
 export async function fetchSevenTvEmotes(
   channelId: number
-): Promise<Result<EmoteInfo[]>> {
+): Promise<EmoteInfo[]> {
   const result = await request<SevenTvUserInfo>(
     "https://7tv.io/v3/users/twitch/" + channelId
   );
 
   if (result instanceof ResultError) {
-    return result;
+    return [];
   }
 
-  return new Ok(mapSeventvEmotes(result.data));
+  return mapSeventvEmotes(result.data);
 }
 
 function mapSeventvEmotes(info: SevenTvUserInfo): EmoteInfo[] {
