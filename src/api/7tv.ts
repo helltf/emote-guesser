@@ -21,7 +21,7 @@ function mapSeventvEmotes(info: SevenTvUserInfo): EmoteInfo[] {
       id: emote.id,
       name: emote.name,
       displayName: emote.data.name,
-      type: EmoteType.SEVENTV,
+      animated: emote.data.animated,
     };
   });
 }

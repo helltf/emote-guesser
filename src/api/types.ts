@@ -14,15 +14,11 @@ export class ResultError {
   }
 }
 
-export enum EmoteType {
-  SEVENTV = "SEVENTV",
-  BTTV = "BTTV",
-  FFZ = "FFZ",
-}
+export type EmoteType = "seventv" | "bttv" | "ffz";
 
 export type EmoteInfo = {
   id: string;
   name: string;
   displayName?: string;
-  type: EmoteType;
+  animated: boolean;
 };

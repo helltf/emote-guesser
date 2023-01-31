@@ -18,7 +18,7 @@ function mapBttvEmotes(bttvResponse: BttvEmoteResponse): EmoteInfo[] {
     return {
       id: emote.id,
       name: emote.code,
-      type: EmoteType.BTTV,
+      animated: emote.imageType === "gif",
     };
   });
 }

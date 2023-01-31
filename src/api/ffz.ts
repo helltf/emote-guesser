@@ -15,7 +15,7 @@ export async function fetchFfzEmotes(channelId: number): Promise<EmoteInfo[]> {
 
 function getEmoteNamesFromSets(sets: FfzEmoteSets): EmoteInfo[] {
   return Object.values(sets)[0].emoticons.map((emote) => {
-    return { id: String(emote.id), name: emote.name, type: EmoteType.FFZ };
+    return { id: String(emote.id), name: emote.name, animated: false };
   });
 }
 

@@ -22,7 +22,7 @@ export default async function emoteHandler(
     fetchBttvEmotes(channelId.data),
   ]);
 
-  res.status(200).json([...sevenTv, ...ffz, ...bttv]);
+  res.status(200).json({ ffz, bttv, sevenTv });
 }
 
 async function getUserId(username: string): Promise<Result<number>> {
