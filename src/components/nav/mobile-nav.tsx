@@ -54,22 +54,22 @@ function MenuIcon() {
         <path
           d="M5 12H20"
           stroke="#666666"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
 
         <path
           d="M5 17H20"
           stroke="#666666"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
 
         <path
           d="M5 7H20"
           stroke="#666666"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </svg>
     </>
