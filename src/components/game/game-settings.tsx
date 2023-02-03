@@ -4,9 +4,12 @@ import ffzIcon from "../../../public/ffz-icon.png";
 import EmoteSettingsButton from "./emote-settings";
 import TimePicker from "./time-picker";
 
-export default function GameSettings() {
+export default function GameSettings(props: { onClose: () => void }) {
   return (
-    <div className="w-full h-full flex align-middle justify-center items-center">
+    <div
+      id="test"
+      className="w-full h-full flex align-middle justify-center items-center"
+    >
       <div className="p-6 rounded-md bg-neutral-900 flex flex-col gap-5 border-[1px] border-gray-600">
         <h2 className="text-white text-2xl">Game Settings</h2>
         <div className="flex flex-col gap-7">
@@ -41,7 +44,10 @@ export default function GameSettings() {
             >
               Back
             </Link>
-            <button className="rounded-lg p-2 w-[70%] bg-purple-600 text-white">
+            <button
+              onClick={() => props.onClose()}
+              className="rounded-lg p-2 w-[70%] bg-purple-600 text-white"
+            >
               Play
             </button>
           </div>

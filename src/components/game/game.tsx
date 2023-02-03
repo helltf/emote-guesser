@@ -5,7 +5,9 @@ export default function Game() {
   const [open, setOpen] = useState(true);
   return (
     <div className="h-[calc(100vh-120px)] bg-neutral-800">
-      {open ? <GameSettings></GameSettings> : null}
+      {open ? (
+        <GameSettings onClose={() => setOpen(false)}></GameSettings>
+      ) : null}
     </div>
   );
 }
