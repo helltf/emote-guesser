@@ -1,28 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
-import EmoteSettingsButton from "./emote-settings";
 import ffzIcon from "../../../public/ffz-icon.png";
+import EmoteSettingsButton from "./emote-settings";
+import TimePicker from "./time-picker";
 
 export default function GameSettings() {
   return (
-    <div className="w-full h-full flex align-middle justify-center items-center ">
+    <div className="w-full h-full flex align-middle justify-center items-center">
       <div className="p-6 rounded-md bg-neutral-900 flex flex-col gap-5 border-[1px] border-gray-600">
         <h2 className="text-white text-2xl">Game Settings</h2>
         <div className="flex flex-col gap-7">
-          <input
-            type="text"
-            placeholder="channel"
-            className="p-2 focus-visible:outline-none"
-          />
-          <div className="flex gap-5">
-            <EmoteSettingsButton icon={FfzIcon}>FFZ</EmoteSettingsButton>
-            <EmoteSettingsButton icon={BttvIcon}>BTTV</EmoteSettingsButton>
-            <EmoteSettingsButton icon={SevenTvIcon}>7tv</EmoteSettingsButton>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm text-purple-400">Enter channel name</p>
+            <input
+              type="text"
+              placeholder="channel"
+              className="p-2 focus-visible:outline-none bg-black rounded-md border-[1px] border-neutral-700 focus-visible:border-purple-600 transition text-white"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="text-sm text-purple-400">Select emoteset</p>
+            <div className="flex gap-5">
+              <EmoteSettingsButton icon={FfzIcon}>FFZ</EmoteSettingsButton>
+              <EmoteSettingsButton icon={BttvIcon}>BTTV</EmoteSettingsButton>
+              <EmoteSettingsButton icon={SevenTvIcon}>7tv</EmoteSettingsButton>
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-purple-400">Set timer</p>
+            <div className="flex gap-4 w-full justify-center items-center">
+              <TimePicker limit={60} start={0} />
+              <p className="text-white text-4xl">:</p>
+              <TimePicker limit={60} start={0} />
+            </div>
           </div>
           <div className="flex gap-4">
             <Link
               href="/"
-              className="p-2 px-5 border-[1px] border-neutral-700 rounded-lg text-white"
+              className="p-2 px-5 border-[1px] border-neutral-700 rounded-lg text-white hover:bg-neutral-600 transition"
             >
               Back
             </Link>
