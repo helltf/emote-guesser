@@ -1,3 +1,3 @@
 export default function EmoteGuesser() {
-  return <></>;
+  return <div></div>;
 }
