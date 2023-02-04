@@ -1,10 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import ffzIcon from "../../../public/ffz-icon.png";
 import EmoteSettingsButton from "./emote-settings";
 import TimePicker from "./time-picker";
 
+enum EmoteSet {
+  FFZ = "ffz",
+  BTTV = "bttv",
+  SEVENTV = "seventv",
+}
+
+type Settings = {
+  channelName: string;
+  emotesets: {
+    [key in EmoteSet]: boolean;
+  };
+  timer: {
+    min: number;
+    sec: number;
+  };
+};
+
 export default function GameSettings(props: { onClose: () => void }) {
+  const handleChannelChange = (e: any) => {
+    const { value } = e.target;
+
+    setSettings((prev) => ({
+      ...prev,
+      channelName: value,
+    }));
+  };
+
+  const handleEmoteSetChange = (emoteSet: EmoteSet) => {
+    setSettings((prev) => ({
+      ...prev,
+    }));
+    console.log(settings);
+  };
+
   return (
     <div className="w-full h-full flex align-middle justify-center items-center">
       <div className="p-6 rounded-md bg-neutral-900 flex flex-col gap-5 border-[1px] border-gray-600">
@@ -13,6 +47,8 @@ export default function GameSettings(props: { onClose: () => void }) {
           <div className="flex flex-col gap-1">
             <p className="text-sm text-purple-400">Enter channel name</p>
             <input
+              value={settings.channelName}
+              onChange={handleChannelChange}
               type="text"
               placeholder="channel"
               className="p-3 text-xl focus-visible:outline-none bg-black rounded-md border-[1px] border-neutral-700 focus-visible:border-purple-600 transition text-white"
@@ -21,9 +57,33 @@ export default function GameSettings(props: { onClose: () => void }) {
           <div className="flex flex-col gap-2">
             <p className="text-sm text-purple-400">Select emoteset</p>
             <div className="flex gap-5">
-              <EmoteSettingsButton icon={FfzIcon}>FFZ</EmoteSettingsButton>
-              <EmoteSettingsButton icon={BttvIcon}>BTTV</EmoteSettingsButton>
-              <EmoteSettingsButton icon={SevenTvIcon}>7tv</EmoteSettingsButton>
+              <EmoteSettingsButton
+                selected={settings.emotesets.ffz}
+                onChange={() => {
+                  handleEmoteSetChange(EmoteSet.FFZ);
+                }}
+                icon={FfzIcon}
+              >
+                FFZ
+              </EmoteSettingsButton>
+              <EmoteSettingsButton
+                selected={settings.emotesets.bttv}
+                onChange={() => {
+                  handleEmoteSetChange(EmoteSet.BTTV);
+                }}
+                icon={BttvIcon}
+              >
+                BTTV
+              </EmoteSettingsButton>
+              <EmoteSettingsButton
+                selected={settings.emotesets.seventv}
+                onChange={() => {
+                  handleEmoteSetChange(EmoteSet.SEVENTV);
+                }}
+                icon={SevenTvIcon}
+              >
+                7tv
+              </EmoteSettingsButton>
             </div>
           </div>
           <div>
