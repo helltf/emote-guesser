@@ -1,3 +1,6 @@
+import { useGameSettings } from "./game-settings-context";
+
 export default function EmoteGuesser() {
-  return <div></div>;
+  const settings = useGameSettings();
+  return <div>{JSON.stringify(settings)}</div>;
 }
