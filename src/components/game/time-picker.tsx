@@ -1,13 +1,27 @@
 import { useState } from "react";
+import { useGameSettings, useGameSettingUpdate } from "./game-settings-context";
 
-export default function TimePicker(props: { limit: number; start: number }) {
-  const [time, setTime] = useState(0);
+export default function TimePicker({
+  limit,
+  start,
+  type,
+}: {
+  limit: number;
+  start: number;
+  type: "sec" | "min";
+}) {
+  const settings = useGameSettings();
+  const updateSettings = useGameSettingUpdate();
 
   const up = () => {
-    time + 1 > props.limit ? setTime(props.start) : setTime(time + 1);
+    settings[type] + 1 > limit
+      ? updateSettings(type, start)
+      : updateSettings(type, settings[type] + 1);
   };
   const down = () => {
-    time - 1 < props.start ? setTime(props.limit) : setTime(time - 1);
+    settings[type] - 1 < start
+      ? updateSettings(type, limit)
+      : updateSettings(type, settings[type] - 1);
   };
 
   return (
@@ -27,7 +41,9 @@ export default function TimePicker(props: { limit: number; start: number }) {
         </svg>
       </div>
       <p className="text-purple-600 text-4xl select-none">
-        {String(time).length === 1 ? 0 + String(time) : time}
+        {String(settings[type]).length === 1
+          ? 0 + String(settings[type])
+          : settings[type]}
       </p>
       <div onClick={down} className="cursor-pointer">
         <svg
