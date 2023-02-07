@@ -3,6 +3,7 @@ import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url
 import { useEffect, useState } from "react";
 import EmoteList from "./emote-list";
 import { useGameSettings } from "./game-settings-context";
+import Timer from "./game-timer";
 
 export default function EmoteGuesser() {
   const settings = useGameSettings();
@@ -49,6 +50,7 @@ export default function EmoteGuesser() {
       <div>
         <div>
           <input onKeyDown={checkEmote}></input>
+          <Timer onFinish={() => {}} />
         </div>
         <div className="flex flex-col items-center">
           <EmoteList emotes={emotes}></EmoteList>
