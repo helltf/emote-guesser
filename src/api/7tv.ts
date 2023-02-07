@@ -18,11 +18,12 @@ export async function fetchSevenTvEmotes(
 function mapSeventvEmotes(info: SevenTvUserInfo): EmoteInfo[] {
   return info.emote_set.emotes.map((emote) => {
     const fileData = emote.data.host.files[emote.data.host.files.length - 5];
+    const animationStatic = emote.data.animated ? "_static" : "";
     return {
       id: emote.id,
       name: emote.name,
       displayName: emote.data.name,
-      src: `https://cdn.7tv.app/emote/${emote.id}/4x.webp`,
+      src: `https://cdn.7tv.app/emote/${emote.id}/4x${animationStatic}.webp`,
       width: fileData.width,
       height: fileData.height,
       guessed: false,
