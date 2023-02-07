@@ -23,4 +23,5 @@ export type EmoteInfo = {
   src: string;
   width: number;
   height: number;
+  guessed: boolean;
 };

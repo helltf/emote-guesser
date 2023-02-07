@@ -22,9 +22,9 @@ export default function EmoteGuesser() {
 
   return (
     <div className="flex flex-col">
-      <EmoteList emotes={emotes.ffz} type="ffz"></EmoteList>
-      <EmoteList emotes={emotes.bttv} type="bttv"></EmoteList>
-      <EmoteList emotes={emotes.seventv} type="seventv"></EmoteList>
+      <EmoteList emotes={emotes.ffz}></EmoteList>
+      <EmoteList emotes={emotes.bttv}></EmoteList>
+      <EmoteList emotes={emotes.seventv}></EmoteList>
     </div>
   );
 }

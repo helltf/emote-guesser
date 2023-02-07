@@ -25,6 +25,7 @@ function mapSeventvEmotes(info: SevenTvUserInfo): EmoteInfo[] {
       src: `https://cdn.7tv.app/emote/${emote.id}/4x.webp`,
       width: fileData.width,
       height: fileData.height,
+      guessed: false,
     };
   });
 }

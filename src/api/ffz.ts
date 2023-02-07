@@ -21,6 +21,7 @@ function getEmoteNamesFromSets(sets: FfzEmoteSets): EmoteInfo[] {
       src: `https://cdn.frankerfacez.com/emote/${emote.id}/4`,
       width: emote.width * 2,
       height: emote.height * 2,
+      guessed: false,
     };
   });
 }
