@@ -1,5 +1,5 @@
-import { EmoteType } from "@/api/types";
-import { EmoteInfo } from "./guesser";
+import { EmoteType, EmoteInfo } from "@/api/types";
+import Image from "next/image";
 
 export default function EmoteList({
   emotes,
@@ -11,9 +11,15 @@ export default function EmoteList({
   return (
     <>
       {emotes?.map((v) => (
-        <p key={v.name} className="text-white">
-          {v.name}
-        </p>
+        <div key={v.name}>
+          <Image
+            src={v.src}
+            width="32"
+            height="32"
+            alt={`emote_${v.name}`}
+          ></Image>
+          {/*<p className="text-white">{v.name}</p>*/}
+        </div>
       ))}
     </>
   );

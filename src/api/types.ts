@@ -20,5 +20,5 @@ export type EmoteInfo = {
   id: string;
   name: string;
   displayName?: string;
-  animated: boolean;
+  src: string;
 };

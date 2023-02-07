@@ -16,13 +16,13 @@ export default async function emoteHandler(
     return res.status(404).send("Not found");
   }
 
-  const [sevenTv, ffz, bttv] = await Promise.all([
+  const [seventv, ffz, bttv] = await Promise.all([
     fetchSevenTvEmotes(channelId.data),
     fetchFfzEmotes(channelId.data),
     fetchBttvEmotes(channelId.data),
   ]);
 
-  res.status(200).json({ ffz, bttv, sevenTv });
+  res.status(200).json({ ffz, bttv, seventv });
 }
 
 async function getUserId(username: string): Promise<Result<number>> {
