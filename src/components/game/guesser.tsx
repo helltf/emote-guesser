@@ -6,7 +6,24 @@ import { useGameSettings } from "./game-settings-context";
 
 export default function EmoteGuesser() {
   const settings = useGameSettings();
-  const [emotes, setEmotes] = useState<EmoteInfo[] | null>(null);
+  const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
+
+  const checkEmote = (e: any) => {
+    if (e.key === "Enter") {
+      const input = e.target.value;
+
+      const nextEmotes = [...emotes];
+      const emote = nextEmotes.find(
+        (e) =>
+          e.displayName?.toLowerCase() === input.toLowerCase() ||
+          e.name.toLowerCase() === input.toLowerCase()
+      );
+
+      if (!emote) return;
+      emote.guessed = true;
+      setEmotes(nextEmotes);
+    }
+  };
 
   useEffect(() => {
     const params = [
@@ -23,13 +40,20 @@ export default function EmoteGuesser() {
       });
   }, [settings]);
 
-  if (!emotes) {
+  if (!emotes.length) {
     return <div>nothing</div>;
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <EmoteList emotes={emotes}></EmoteList>
-    </div>
+    <>
+      <div>
+        <div>
+          <input onKeyDown={checkEmote}></input>
+        </div>
+        <div className="flex flex-col items-center">
+          <EmoteList emotes={emotes}></EmoteList>
+        </div>
+      </div>
+    </>
   );
 }

@@ -14,7 +14,10 @@ export default function EmoteList({ emotes }: { emotes: EmoteInfo[] }) {
             alt={`emote_${v.id}`}
           ></Image>
           {v.guessed ? (
-            <p className="absolute text-white text-xs bottom-0 right-0">
+            <p
+              style={{ textShadow: "2px 0 0 #000" }}
+              className="absolute text-white text-xs bottom-0 right-0 shadowte"
+            >
               {v.displayName ?? v.name}
             </p>
           ) : (
