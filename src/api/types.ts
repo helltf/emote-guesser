@@ -21,4 +21,6 @@ export type EmoteInfo = {
   name: string;
   displayName?: string;
   src: string;
+  width: number;
+  height: number;
 };

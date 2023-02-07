@@ -9,18 +9,17 @@ export default function EmoteList({
   type: EmoteType;
 }) {
   return (
-    <>
+    <div className="flex w-screen flex-wrap items-center gap-x-2">
       {emotes?.map((v) => (
-        <div key={v.name}>
-          <Image
-            src={v.src}
-            width="32"
-            height="32"
-            alt={`emote_${v.name}`}
-          ></Image>
-          {/*<p className="text-white">{v.name}</p>*/}
-        </div>
+        <Image
+          className="h-fit"
+          key={`${v.id}_${v.name}`}
+          src={v.src}
+          width={v.width}
+          height={v.height}
+          alt={`emote_${v.id}`}
+        ></Image>
       ))}
-    </>
+    </div>
   );
 }

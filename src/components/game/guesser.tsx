@@ -1,6 +1,6 @@
+import { EmoteInfo } from "@/api/types";
 import { useEffect, useState } from "react";
 import EmoteList from "./emote-list";
-import { useGameSettings } from "./game-settings-context";
 
 export default function EmoteGuesser() {
   const [emotes, setEmotes] = useState<EmoteData | null>(null);
@@ -21,7 +21,7 @@ export default function EmoteGuesser() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col">
       <EmoteList emotes={emotes.ffz} type="ffz"></EmoteList>
       <EmoteList emotes={emotes.bttv} type="bttv"></EmoteList>
       <EmoteList emotes={emotes.seventv} type="seventv"></EmoteList>
@@ -33,11 +33,4 @@ type EmoteData = {
   ffz: EmoteInfo[];
   bttv: EmoteInfo[];
   seventv: EmoteInfo[];
-};
-
-export type EmoteInfo = {
-  id: string;
-  name: string;
-  displayName?: string;
-  animated: boolean;
 };

@@ -19,6 +19,8 @@ function getEmoteNamesFromSets(sets: FfzEmoteSets): EmoteInfo[] {
       id: String(emote.id),
       name: emote.name,
       src: `https://cdn.frankerfacez.com/emote/${emote.id}/4`,
+      width: emote.width * 2,
+      height: emote.height * 2,
     };
   });
 }
