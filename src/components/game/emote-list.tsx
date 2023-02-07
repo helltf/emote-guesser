@@ -1,4 +1,4 @@
-import { EmoteType, EmoteInfo } from "@/api/types";
+import { EmoteInfo } from "@/api/types";
 import Image from "next/image";
 
 export default function EmoteList({ emotes }: { emotes: EmoteInfo[] }) {
