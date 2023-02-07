@@ -7,7 +7,15 @@ import Timer from "./game-timer";
 
 export default function EmoteGuesser() {
   const settings = useGameSettings();
+  const [emoteInput, setEmoteInput] = useState("");
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
+  const [guessed, setGuessedEmotes] = useState(0);
+
+  const checkFinish = () => {
+    if (guessed === emotes.length) {
+      console.log("win");
+    }
+  };
 
   const checkEmote = (e: any) => {
     if (e.key === "Enter") {
@@ -22,6 +30,9 @@ export default function EmoteGuesser() {
 
       if (!emote) return;
       emote.guessed = true;
+      setEmoteInput("");
+      setGuessedEmotes(guessed + 1);
+      checkFinish();
       setEmotes(nextEmotes);
     }
   };
@@ -49,8 +60,17 @@ export default function EmoteGuesser() {
     <>
       <div>
         <div>
-          <input onKeyDown={checkEmote}></input>
+          <input
+            onChange={(e) => {
+              setEmoteInput(e.target.value);
+            }}
+            value={emoteInput}
+            onKeyDown={checkEmote}
+          ></input>
           <Timer onFinish={() => {}} />
+          <p>
+            {guessed}/{emotes.length}
+          </p>
         </div>
         <div className="flex flex-col items-center">
           <EmoteList emotes={emotes}></EmoteList>

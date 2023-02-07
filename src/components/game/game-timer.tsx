@@ -7,6 +7,7 @@ export default function Timer({ onFinish }: { onFinish: () => void }) {
   const [minutes, setMinutes] = useState(settings.min);
 
   const updateTimer = () => {
+    if (seconds === 0 && minutes === 0) return;
     setSeconds(seconds - 1);
 
     if (seconds === 0) {
