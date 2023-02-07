@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function EmoteList({ emotes }: { emotes: EmoteInfo[] }) {
   return (
-    <div className="flex w-screen flex-wrap items-center gap-x-4">
+    <div className="flex w-[95%] flex-wrap items-center gap-x-4">
       {emotes?.map((v) => (
         <div key={`${v.id}_${v.name}`} className="relative">
           <Image

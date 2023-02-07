@@ -9,7 +9,7 @@ export default function GameSettings(props: { onClose: () => void }) {
   const settings = useGameSettings();
   const updateSettings = useGameSettingUpdate();
   return (
-    <div className="w-full h-full flex align-middle justify-center items-center">
+    <div className="w-full flex align-middle justify-center items-center h-[calc(100vh-120px)]">
       <div className="p-6 rounded-md bg-neutral-900 flex flex-col gap-5 border-[1px] border-gray-600">
         <h2 className="text-white text-2xl">Game Settings</h2>
         <div className="flex flex-col gap-7">
