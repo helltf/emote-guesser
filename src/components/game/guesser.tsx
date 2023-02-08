@@ -60,27 +60,29 @@ export default function EmoteGuesser() {
 
   return (
     <>
-      <div>
-        <div className="flex flex-row p-5 gap-5 justify-between">
-          <input
-            className="w-1/2 outline-none p-2 border-purple-700 rounded-md border-[3px]"
-            placeholder="enter emote"
-            onChange={(e) => {
-              setEmoteInput(e.target.value);
-            }}
-            value={emoteInput}
-            onKeyDown={checkEmote}
-          ></input>
-          <div>
+      <div className="flex flex-row p-5 gap-5 justify-between">
+        <input
+          className="w-1/2 outline-none p-2 border-purple-700 rounded-md border-2"
+          placeholder="enter emote"
+          onChange={(e) => {
+            setEmoteInput(e.target.value);
+          }}
+          value={emoteInput}
+          onKeyDown={checkEmote}
+        ></input>
+        <div className="flex gap-5 ">
+          <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
             <Timer onFinish={() => {}} />
-            <p>
+          </div>
+          <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
+            <p className="text-white">
               {guessed}/{emotes.length}
             </p>
           </div>
         </div>
-        <div className="flex flex-col items-center">
-          <EmoteList emotes={emotes}></EmoteList>
-        </div>
+      </div>
+      <div className="flex flex-col items-center">
+        <EmoteList emotes={emotes}></EmoteList>
       </div>
     </>
   );

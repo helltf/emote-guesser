@@ -25,11 +25,9 @@ export default function Timer({ onFinish }: { onFinish: () => void }) {
     return () => clearInterval(interval);
   });
   return (
-    <div>
-      <p>
-        {String(minutes).length === 1 ? "0" + String(minutes) : minutes}:
-        {String(seconds).length === 1 ? "0" + String(seconds) : seconds}
-      </p>
-    </div>
+    <p className="text-white">
+      {String(minutes).length === 1 ? "0" + String(minutes) : minutes}:
+      {String(seconds).length === 1 ? "0" + String(seconds) : seconds}
+    </p>
   );
 }
