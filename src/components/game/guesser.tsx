@@ -11,13 +11,13 @@ export default function EmoteGuesser() {
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
 
-  const checkFinish = () => {
-    if (guessed === emotes.length) {
+  const checkFinish = (newGuessed: number) => {
+    if (newGuessed === emotes.length) {
       console.log("win");
     }
   };
 
-  const checkEmote = (e: any) => {
+  function checkEmote(e: any) {
     if (e.key === "Enter") {
       const input = e.target.value;
 
@@ -29,13 +29,15 @@ export default function EmoteGuesser() {
       );
 
       if (!emote) return;
+
       emote.guessed = true;
+      const newGuessed = guessed + 1;
       setEmoteInput("");
-      setGuessedEmotes(guessed + 1);
-      checkFinish();
+      setGuessedEmotes(newGuessed);
+      checkFinish(newGuessed);
       setEmotes(nextEmotes);
     }
-  };
+  }
 
   useEffect(() => {
     const params = [
@@ -47,8 +49,8 @@ export default function EmoteGuesser() {
 
     fetch("/api/user/" + settings.channelName + "?" + searchParams.toString())
       .then((res) => res.json())
-      .then((data) => {
-        setEmotes(data);
+      .then((data: EmoteInfo[]) => {
+        setEmotes(data.splice(0, 4));
       });
   }, [settings]);
 
