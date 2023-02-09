@@ -5,11 +5,14 @@ import EmoteSettingsButton from "./emote-settings";
 import { useGameSettings, useGameSettingUpdate } from "./game-settings-context";
 import TimePicker from "./time-picker";
 
-export default function GameSettings(props: { onClose: () => void }) {
+export default function GameSettings(props: {
+  onClose: () => void;
+  open: boolean;
+}) {
   const settings = useGameSettings();
   const updateSettings = useGameSettingUpdate();
   return (
-    <div className="w-full flex align-middle justify-center items-center h-[calc(100vh-120px)]">
+    <div className="w-full animate-fade-in flex align-middle justify-center items-center h-[calc(100vh-120px)]">
       <div className="p-6 rounded-md bg-neutral-900 flex flex-col gap-5 border-[1px] border-gray-600">
         <h2 className="text-white text-2xl">Game Settings</h2>
         <div className="flex flex-col gap-7">
