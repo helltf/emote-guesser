@@ -18,7 +18,10 @@ function mapBttvEmotes(bttvResponse: BttvEmoteResponse): EmoteInfo[] {
     return {
       id: emote.id,
       name: emote.code,
-      animated: emote.imageType === "gif",
+      src: `https://cdn.betterttv.net/emote/${emote.id}/2x.${emote.imageType}`,
+      width: 56,
+      height: 56,
+      guessed: false,
     };
   });
 }

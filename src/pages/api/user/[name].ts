@@ -9,20 +9,20 @@ export default async function emoteHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { name } = req.query;
+  const { name, ffz, bttv, seventv } = req.query;
   const channelId = await getUserId(name as string);
 
   if (channelId instanceof ResultError) {
     return res.status(404).send("Not found");
   }
 
-  const [sevenTv, ffz, bttv] = await Promise.all([
-    fetchSevenTvEmotes(channelId.data),
-    fetchFfzEmotes(channelId.data),
-    fetchBttvEmotes(channelId.data),
+  const emotes = await Promise.all([
+    ...(seventv === "true" ? [fetchSevenTvEmotes(channelId.data)] : []),
+    ...(bttv === "true" ? [fetchBttvEmotes(channelId.data)] : []),
+    ...(ffz === "true" ? [fetchFfzEmotes(channelId.data)] : []),
   ]);
 
-  res.status(200).json({ ffz, bttv, sevenTv });
+  res.status(200).json(emotes.flatMap((e) => e));
 }
 
 async function getUserId(username: string): Promise<Result<number>> {
