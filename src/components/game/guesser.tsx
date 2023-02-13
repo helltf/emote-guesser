@@ -29,6 +29,7 @@ export default function EmoteGuesser() {
       const nextEmotes = [...emotes];
       const emote = nextEmotes.find(
         (e) =>
+          !e.guessed ||
           e.displayName?.toLowerCase() === input.toLowerCase() ||
           e.name.toLowerCase() === input.toLowerCase()
       );
