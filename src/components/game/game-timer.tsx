@@ -3,20 +3,14 @@ import { useGameSettings } from "./game-settings-context";
 
 export default function Timer({ onFinish }: { onFinish: () => void }) {
   const settings = useGameSettings();
-  const [seconds, setSeconds] = useState(settings.sec);
-  const [minutes, setMinutes] = useState(settings.min);
+  const [seconds, setSeconds] = useState(settings.sec + settings.min * 60);
 
   const updateTimer = () => {
-    if (seconds === 0 && minutes === 0) return;
+    if (seconds === 0) return;
     setSeconds(seconds - 1);
 
-    if (seconds === 0) {
-      if (minutes === 0) {
-        return onFinish();
-      }
-      setMinutes(minutes - 1);
-      setSeconds(59);
-      return;
+    if (seconds === 1) {
+      return onFinish();
     }
   };
 
@@ -24,10 +18,20 @@ export default function Timer({ onFinish }: { onFinish: () => void }) {
     const interval = setInterval(updateTimer, 1000);
     return () => clearInterval(interval);
   });
+
+  const getMinutes = (seconds: number) => {
+    return Math.floor(seconds / 60);
+  };
+
   return (
     <p className="text-white">
-      {String(minutes).length === 1 ? "0" + String(minutes) : minutes}:
-      {String(seconds).length === 1 ? "0" + String(seconds) : seconds}
+      {String(getMinutes(seconds)).length === 1
+        ? "0" + String(getMinutes(seconds))
+        : seconds % 60}
+      :
+      {String(seconds % 60).length === 1
+        ? "0" + String(seconds % 60)
+        : seconds % 60}
     </p>
   );
 }

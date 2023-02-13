@@ -10,10 +10,15 @@ export default function EmoteGuesser() {
   const [emoteInput, setEmoteInput] = useState("");
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  function finish() {
+    setOpen(true);
+  }
 
   const checkFinish = (newGuessed: number) => {
     if (newGuessed === emotes.length) {
-      console.log("win");
+      finish();
     }
   };
 
@@ -50,12 +55,12 @@ export default function EmoteGuesser() {
     fetch("/api/user/" + settings.channelName + "?" + searchParams.toString())
       .then((res) => res.json())
       .then((data: EmoteInfo[]) => {
-        setEmotes(data.splice(0, 4));
+        setEmotes(data);
       });
   }, [settings]);
 
   if (!emotes.length) {
-    return <div>nothing</div>;
+    return <></>;
   }
 
   return (
@@ -72,7 +77,11 @@ export default function EmoteGuesser() {
         ></input>
         <div className="flex gap-5 ">
           <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
-            <Timer onFinish={() => {}} />
+            <Timer
+              onFinish={() => {
+                finish();
+              }}
+            />
           </div>
           <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
             <p className="text-white">
@@ -84,6 +93,7 @@ export default function EmoteGuesser() {
       <div className="flex flex-col items-center">
         <EmoteList emotes={emotes}></EmoteList>
       </div>
+      {open ? <div></div> : <></>}
     </>
   );
 }
