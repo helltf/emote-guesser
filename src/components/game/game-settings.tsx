@@ -5,10 +5,7 @@ import EmoteSettingsButton from "./emote-settings";
 import { useGameSettings, useGameSettingUpdate } from "./game-settings-context";
 import TimePicker from "./time-picker";
 
-export default function GameSettings(props: {
-  onClose: () => void;
-  open: boolean;
-}) {
+export default function GameSettings(props: { onClose: () => void }) {
   const settings = useGameSettings();
   const updateSettings = useGameSettingUpdate();
   return (
