@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { useGameSettings } from "./game-settings-context";
 
-export default function Timer({ onFinish }: { onFinish: () => void }) {
-  const settings = useGameSettings();
-  const [seconds, setSeconds] = useState(settings.sec + settings.min * 60);
+export default function Timer({
+  onFinish,
+  sec,
+  min,
+}: {
+  onFinish: () => void;
+  sec: number;
+  min: number;
+}) {
+  const [seconds, setSeconds] = useState(sec + min * 60);
 
   const updateTimer = () => {
     if (seconds === 0) return;
