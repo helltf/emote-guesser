@@ -1,6 +1,7 @@
 import { EmoteInfo } from "@/api/types";
 import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url";
 import { useEffect, useState } from "react";
+import EmoteInput from "./emote-input";
 import EmoteList from "./emote-list";
 import GameEndModal from "./game-end";
 import { useGameSettings } from "./game-settings-context";
@@ -8,7 +9,6 @@ import Timer from "./game-timer";
 
 export default function EmoteGuesser() {
   const settings = useGameSettings();
-  const [emoteInput, setEmoteInput] = useState("");
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
   const [open, setOpen] = useState(false);
@@ -23,27 +23,23 @@ export default function EmoteGuesser() {
     }
   };
 
-  function checkEmote(e: any) {
-    if (e.key === "Enter") {
-      const input = e.target.value;
+  function checkEmote(input: string): boolean {
+    const nextEmotes = [...emotes];
+    const emote = nextEmotes.find(
+      (e) =>
+        !e.guessed &&
+        (e.displayName?.toLowerCase() === input.toLowerCase() ||
+          e.name.toLowerCase() === input.toLowerCase())
+    );
 
-      const nextEmotes = [...emotes];
-      const emote = nextEmotes.find(
-        (e) =>
-          !e.guessed &&
-          (e.displayName?.toLowerCase() === input.toLowerCase() ||
-            e.name.toLowerCase() === input.toLowerCase())
-      );
+    if (!emote) return false;
 
-      if (!emote) return;
-
-      emote.guessed = true;
-      const newGuessed = guessed + 1;
-      setEmoteInput("");
-      setGuessedEmotes(newGuessed);
-      checkFinish(newGuessed);
-      setEmotes(nextEmotes);
-    }
+    emote.guessed = true;
+    const newGuessed = guessed + 1;
+    setGuessedEmotes(newGuessed);
+    checkFinish(newGuessed);
+    setEmotes(nextEmotes);
+    return true;
   }
 
   useEffect(() => {
@@ -68,16 +64,8 @@ export default function EmoteGuesser() {
   return (
     <>
       <div className="flex flex-row p-5 gap-5 justify-between">
-        <input
-          className="w-1/2 outline-none p-2 border-purple-700 rounded-md border-2"
-          placeholder="enter emote"
-          onChange={(e) => {
-            setEmoteInput(e.target.value);
-          }}
-          value={emoteInput}
-          onKeyDown={checkEmote}
-        ></input>
         <div className="flex gap-5 ">
+          <EmoteInput checkEmote={checkEmote}></EmoteInput>
           <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
             <Timer
               sec={settings.sec}
