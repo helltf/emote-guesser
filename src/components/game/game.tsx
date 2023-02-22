@@ -8,7 +8,7 @@ export default function Game() {
 
   return (
     <GameSettingsProvider>
-      <div className="min-h-[calc(100vh-120px)] bg-neutral-800 ">
+      <div className="relative min-h-[calc(100vh-120px)] bg-neutral-800 ">
         {open ? (
           <GameSettings onClose={() => setOpen(false)}></GameSettings>
         ) : (

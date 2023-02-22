@@ -63,10 +63,10 @@ export default function EmoteGuesser() {
 
   return (
     <>
-      <div className="flex flex-row p-5 gap-5 justify-between">
+      <div className="flex flex-row justify-between gap-5 p-5">
         <div className="flex gap-5 ">
           <EmoteInput checkEmote={checkEmote}></EmoteInput>
-          <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
+          <div className="flex h-full items-center rounded-md border-[1px] border-neutral-700 bg-purple-600 p-2 px-5">
             <Timer
               sec={settings.sec}
               min={settings.min}
@@ -75,7 +75,7 @@ export default function EmoteGuesser() {
               }}
             />
           </div>
-          <div className="h-full rounded-md bg-purple-600 flex items-center p-2 px-5 border-[1px] border-neutral-700">
+          <div className="flex h-full items-center rounded-md border-[1px] border-neutral-700 bg-purple-600 p-2 px-5">
             <p className="text-white">
               {guessed}/{emotes.length}
             </p>
