@@ -64,8 +64,8 @@ export default function EmoteGuesser() {
   return (
     <>
       <div className="flex flex-row justify-between gap-5 p-5">
+        <EmoteInput checkEmote={checkEmote}></EmoteInput>
         <div className="flex gap-5 ">
-          <EmoteInput checkEmote={checkEmote}></EmoteInput>
           <div className="flex h-full items-center rounded-md border-[1px] border-neutral-700 bg-purple-600 p-2 px-5">
             <Timer
               sec={settings.sec}
