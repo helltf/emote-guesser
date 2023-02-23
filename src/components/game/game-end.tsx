@@ -4,7 +4,7 @@ export default function GameEndModal(props: {
   emoteCount: number;
   channel: string;
 }) {
-  const title = "Times up!";
+  const title = "Time's up!";
   const minutes = Math.floor(props.time / 60);
   const seconds = props.time % 60;
   return (
@@ -19,7 +19,7 @@ export default function GameEndModal(props: {
           <div className="flex flex-col">
             <p className="text-sm text-purple-400">Time left</p>
             <p className="text-3xl text-white">
-              {minutes}min {seconds}s{" "}
+              {minutes}min {seconds}s
             </p>
           </div>
           <div className="flex flex-col">
@@ -31,6 +31,7 @@ export default function GameEndModal(props: {
         </div>
         <div>
           <button>Restart Game</button>
+          <button>Share Stats</button>
         </div>
       </div>
     </div>
