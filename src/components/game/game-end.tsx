@@ -1,10 +1,13 @@
+import { GameEndType } from "./guesser";
+
 export default function GameEndModal(props: {
   time: number;
   emoteGuessed: number;
   emoteCount: number;
   channel: string;
+  endType: GameEndType;
 }) {
-  const title = "Time's up!";
+  const title = getTitle(props.endType);
   const minutes = Math.floor(props.time / 60);
   const seconds = props.time % 60;
   return (
@@ -36,4 +39,10 @@ export default function GameEndModal(props: {
       </div>
     </div>
   );
+}
+
+function getTitle(endType: GameEndType) {
+  if (endType === GameEndType.TIME_UP) return "Time's up!";
+  if (endType === GameEndType.STOPPED) return "Stopped";
+  return "Emotes guessed!";
 }

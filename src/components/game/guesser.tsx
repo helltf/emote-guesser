@@ -7,19 +7,25 @@ import GameEndModal from "./game-end";
 import { useGameSettings } from "./game-settings-context";
 import Timer from "./game-timer";
 
+export enum GameEndType {
+  TIME_UP = "time_up",
+  EMOTES_GUESSED = "emotes_guessed",
+  STOPPED = "stopped",
+}
+
 export default function EmoteGuesser() {
   const settings = useGameSettings();
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [finished, setFinished] = useState<GameEndType | null>(null);
 
-  function finish() {
-    setOpen(true);
+  function finish(endType: GameEndType) {
+    setFinished(endType);
   }
 
   const checkFinish = (newGuessed: number) => {
     if (newGuessed === emotes.length) {
-      finish();
+      finish(GameEndType.EMOTES_GUESSED);
     }
   };
 
@@ -70,8 +76,9 @@ export default function EmoteGuesser() {
             <Timer
               sec={settings.sec}
               min={settings.min}
+              finished={!!finished}
               onFinish={() => {
-                finish();
+                finish(GameEndType.TIME_UP);
               }}
             />
           </div>
@@ -85,12 +92,13 @@ export default function EmoteGuesser() {
       <div className="flex flex-col items-center">
         <EmoteList emotes={emotes}></EmoteList>
       </div>
-      {open ? (
+      {finished ? (
         <GameEndModal
           emoteCount={emotes.length}
           channel={settings.channelName}
           time={settings.sec + settings.min * 60}
           emoteGuessed={guessed}
+          endType={finished}
         ></GameEndModal>
       ) : (
         <></>
