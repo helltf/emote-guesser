@@ -4,10 +4,12 @@ export default function Timer({
   onFinish,
   sec,
   min,
+  finished,
 }: {
   onFinish: () => void;
   sec: number;
   min: number;
+  finished: boolean;
 }) {
   const [seconds, setSeconds] = useState(sec + min * 60);
 
@@ -21,6 +23,7 @@ export default function Timer({
   };
 
   useEffect(() => {
+    if (finished) return;
     const interval = setInterval(updateTimer, 1000);
     return () => clearInterval(interval);
   });
