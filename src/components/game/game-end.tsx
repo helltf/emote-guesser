@@ -1,4 +1,8 @@
 import Image from "next/image";
+import SevenTvIcon from "../icons/7tv-icons";
+import BttvIcon from "../icons/bttv-icon";
+import FfzIcon from "../icons/ffz-icons";
+import EndEmoteIcon from "./end-emote";
 import { useGameSettings } from "./game-settings-context";
 import { GameEndType } from "./guesser";
 
@@ -35,13 +39,22 @@ export default function GameEndModal(props: {
               {props.emoteGuessed}/{props.emoteCount}
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2">
             <p className="text-sm text-purple-400">Emotetypes</p>
-            <p className="text-3xl text-white">{settings.ffz ? "ffz" : ""}</p>
-            <p className="text-3xl text-white">{settings.bttv ? "bttv" : ""}</p>
-            <p className="text-3xl text-white">
-              {settings.seventv ? "seventv" : ""}
-            </p>
+            <div className="flex gap-2">
+              <EndEmoteIcon
+                highlighted={settings.ffz}
+                icon={FfzIcon}
+              ></EndEmoteIcon>
+              <EndEmoteIcon
+                highlighted={settings.bttv}
+                icon={BttvIcon}
+              ></EndEmoteIcon>
+              <EndEmoteIcon
+                highlighted={settings.seventv}
+                icon={SevenTvIcon}
+              ></EndEmoteIcon>
+            </div>
           </div>
         </div>
         <div className="flex flex-row justify-end gap-4">
