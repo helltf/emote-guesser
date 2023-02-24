@@ -14,7 +14,9 @@ export default function GameEndModal(props: {
   const minutes = Math.floor(props.currentTime / 60);
   return (
     <div className="fixed top-1/2 left-1/2 flex w-96 translate-x-[-50%] translate-y-[-50%] flex-col gap-5 rounded-md border-[1px] border-gray-600 bg-neutral-900 p-5">
-      <h2 className="text-3xl text-white">{title}</h2>
+      <div className="flex justify-center">
+        <h2 className="text-4xl text-white">{title}</h2>
+      </div>
       <div className="flex flex-col gap-7">
         <div className="flex flex-col gap-1">
           <div className="flex flex-col">
