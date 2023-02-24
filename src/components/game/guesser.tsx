@@ -1,6 +1,6 @@
 import { EmoteInfo } from "@/api/types";
 import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import EmoteInput from "./emote-input";
 import EmoteList from "./emote-list";
 import GameEndModal from "./game-end";
@@ -18,6 +18,7 @@ export default function EmoteGuesser() {
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
   const [finished, setFinished] = useState<GameEndType | null>(null);
+  const [seconds, setSeconds] = useState(settings.sec + settings.min * 60);
 
   function finish(endType: GameEndType) {
     setFinished(endType);
@@ -74,8 +75,8 @@ export default function EmoteGuesser() {
         <div className="flex gap-5 ">
           <div className="flex h-full items-center rounded-md border-[1px] border-neutral-700 bg-purple-600 p-2 px-5">
             <Timer
-              sec={settings.sec}
-              min={settings.min}
+              seconds={seconds}
+              setSeconds={setSeconds}
               finished={!!finished}
               onFinish={() => {
                 finish(GameEndType.TIME_UP);
@@ -95,8 +96,6 @@ export default function EmoteGuesser() {
       {finished ? (
         <GameEndModal
           emoteCount={emotes.length}
-          channel={settings.channelName}
-          time={settings.sec + settings.min * 60}
           emoteGuessed={guessed}
           endType={finished}
         ></GameEndModal>

@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Timer({
   onFinish,
-  sec,
-  min,
+  seconds,
   finished,
+  setSeconds,
 }: {
   onFinish: () => void;
-  sec: number;
-  min: number;
+  setSeconds: (value: number) => void;
+  seconds: number;
   finished: boolean;
 }) {
-  const [seconds, setSeconds] = useState(sec + min * 60);
-
   const updateTimer = () => {
     if (seconds === 0) return;
     setSeconds(seconds - 1);
