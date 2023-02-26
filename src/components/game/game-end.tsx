@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SevenTvIcon from "../icons/7tv-icons";
 import BttvIcon from "../icons/bttv-icon";
 import FfzIcon from "../icons/ffz-icons";
@@ -11,18 +10,20 @@ export default function GameEndModal(props: {
   emoteCount: number;
   endType: GameEndType;
   currentTime: number;
+  resetGame: () => void;
+  showNames: () => void;
 }) {
   const settings = useGameSettings();
   const title = getTitle(props.endType);
   const seconds = props.currentTime % 60;
   const minutes = Math.floor(props.currentTime / 60);
   return (
-    <div className="fixed top-1/2 left-1/2 flex w-96 translate-x-[-50%] translate-y-[-50%] flex-col gap-5 rounded-md border-[1px] border-gray-600 bg-neutral-900 p-5">
+    <div className="fixed top-1/2 left-1/2 flex w-96 translate-x-[-50%] translate-y-[-50%] flex-col gap-5 rounded-md border-[1px] border-gray-600 bg-neutral-900 p-6">
       <div className="flex justify-center">
         <h2 className="text-4xl text-white">{title}</h2>
       </div>
       <div className="flex flex-col gap-7">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col">
             <p className="text-sm text-purple-400">Channel</p>
             <p className="text-3xl text-white">{settings.channelName}</p>
@@ -57,13 +58,24 @@ export default function GameEndModal(props: {
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-end gap-4">
-          <button className="rounded-md bg-purple-600">
-            <ShareIcon></ShareIcon>
+        <div className="flex justify-between">
+          <button
+            onClick={() => props.showNames()}
+            className="w-1/2 rounded-md bg-purple-600 text-lg text-white"
+          >
+            Show Names
           </button>
-          <button className="rounded-md bg-purple-600">
-            <RestartIcon></RestartIcon>
-          </button>
+          <div className="flex flex-row justify-end gap-4">
+            <button className="rounded-md bg-purple-600">
+              <ShareIcon></ShareIcon>
+            </button>
+            <button
+              onClick={() => props.resetGame()}
+              className="rounded-md bg-purple-600"
+            >
+              <RestartIcon></RestartIcon>
+            </button>
+          </div>
         </div>
       </div>
     </div>

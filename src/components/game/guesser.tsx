@@ -24,6 +24,31 @@ export default function EmoteGuesser() {
     setFinished(endType);
   }
 
+  function reset() {
+    setGuessedEmotes(0);
+    setFinished(null);
+    setSeconds(settings.sec + settings.min * 60);
+    const resetEmotes = [
+      ...emotes.map((e) => {
+        return {
+          ...e,
+          guessed: false,
+        };
+      }),
+    ];
+    setEmotes(resetEmotes);
+  }
+
+  function showNames() {
+    setFinished(null);
+    const shownEmotes = [
+      ...emotes.map((e) => {
+        return { ...e, guessed: true };
+      }),
+    ];
+    setEmotes(shownEmotes);
+  }
+
   const checkFinish = (newGuessed: number) => {
     if (newGuessed === emotes.length) {
       finish(GameEndType.EMOTES_GUESSED);
@@ -99,6 +124,8 @@ export default function EmoteGuesser() {
           emoteGuessed={guessed}
           endType={finished}
           currentTime={seconds}
+          resetGame={reset}
+          showNames={showNames}
         ></GameEndModal>
       ) : (
         <></>
