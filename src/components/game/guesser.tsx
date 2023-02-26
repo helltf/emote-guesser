@@ -86,6 +86,7 @@ export default function EmoteGuesser() {
       .then((res) => res.json())
       .then((data: EmoteInfo[]) => {
         setEmotes(data);
+        data.forEach((e) => console.log(e.displayName));
       });
   }, [settings]);
 
