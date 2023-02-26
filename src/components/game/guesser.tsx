@@ -1,6 +1,6 @@
 import { EmoteInfo } from "@/api/types";
 import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import EmoteInput from "./emote-input";
 import EmoteList from "./emote-list";
 import GameEndModal from "./game-end";
@@ -13,7 +13,7 @@ export enum GameEndType {
   STOPPED = "stopped",
 }
 
-export default function EmoteGuesser() {
+export default function EmoteGuesser(props: { openSettings: () => any }) {
   const settings = useGameSettings();
   const [emotes, setEmotes] = useState<EmoteInfo[]>([]);
   const [guessed, setGuessedEmotes] = useState(0);
@@ -127,6 +127,7 @@ export default function EmoteGuesser() {
           currentTime={seconds}
           resetGame={reset}
           showNames={showNames}
+          openSettings={() => props.openSettings()}
         ></GameEndModal>
       ) : (
         <></>
