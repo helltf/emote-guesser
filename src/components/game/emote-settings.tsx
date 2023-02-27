@@ -11,7 +11,7 @@ export default function EmoteSettingsButton(props: {
   return (
     <div
       onClick={() => updateSettings(props.type, !settings[props.type])}
-      className={`p-4 px-9 text-white border-[1px] border-neutral-700 rounded-lg flex flex-col cursor-pointer items-center transition gap-1 ${
+      className={`flex cursor-pointer flex-col items-center gap-1 rounded-lg border-[1px] border-neutral-700 p-4 px-9 text-white transition ${
         settings[props.type] ? "bg-purple-900" : "hover:bg-neutral-600"
       }`}
     >

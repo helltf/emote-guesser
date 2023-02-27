@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import GameSettings from "./game-settings";
 import { GameSettingsProvider } from "./game-settings-context";
 import EmoteGuesser from "./guesser";
@@ -8,11 +8,15 @@ export default function Game() {
 
   return (
     <GameSettingsProvider>
-      <div className="min-h-[calc(100vh-120px)] bg-neutral-800 ">
+      <div className="relative min-h-[calc(100vh-120px)] bg-neutral-800 ">
         {open ? (
           <GameSettings onClose={() => setOpen(false)}></GameSettings>
         ) : (
-          <EmoteGuesser />
+          <EmoteGuesser
+            openSettings={() => {
+              setOpen(true);
+            }}
+          />
         )}
       </div>
     </GameSettingsProvider>

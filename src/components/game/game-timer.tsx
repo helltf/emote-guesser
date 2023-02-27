@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
-import { useGameSettings } from "./game-settings-context";
+import { useEffect } from "react";
 
-export default function Timer({ onFinish }: { onFinish: () => void }) {
-  const settings = useGameSettings();
-  const [seconds, setSeconds] = useState(settings.sec + settings.min * 60);
-
+export default function Timer({
+  onFinish,
+  seconds,
+  finished,
+  setSeconds,
+}: {
+  onFinish: () => void;
+  setSeconds: (value: number) => void;
+  seconds: number;
+  finished: boolean;
+}) {
   const updateTimer = () => {
     if (seconds === 0) return;
     setSeconds(seconds - 1);
@@ -15,6 +21,7 @@ export default function Timer({ onFinish }: { onFinish: () => void }) {
   };
 
   useEffect(() => {
+    if (finished) return;
     const interval = setInterval(updateTimer, 1000);
     return () => clearInterval(interval);
   });
