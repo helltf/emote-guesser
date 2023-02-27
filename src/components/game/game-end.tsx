@@ -99,7 +99,7 @@ function RestartIcon() {
   );
 }
 
-function SettingsIcon() {
+export function SettingsIcon() {
   return (
     <svg
       width="48"

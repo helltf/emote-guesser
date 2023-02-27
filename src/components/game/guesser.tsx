@@ -3,7 +3,7 @@ import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url
 import { useEffect, useState } from "react";
 import EmoteInput from "./emote-input";
 import EmoteList from "./emote-list";
-import GameEndModal from "./game-end";
+import GameEndModal, { SettingsIcon } from "./game-end";
 import { useGameSettings } from "./game-settings-context";
 import Timer from "./game-timer";
 
@@ -114,6 +114,13 @@ export default function EmoteGuesser(props: { openSettings: () => any }) {
               {guessed}/{emotes.length}
             </p>
           </div>
+
+              <button
+                onClick={() => props.openSettings()}
+                className="rounded-md bg-purple-600"
+              >
+                <SettingsIcon></SettingsIcon>
+              </button>
         </div>
       </div>
       <div className="flex flex-col items-center">
