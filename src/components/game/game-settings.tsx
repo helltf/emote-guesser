@@ -43,7 +43,7 @@ export default function GameSettings(props: { onClose: () => void }) {
             <div className="flex w-full items-center justify-center gap-4">
               <TimePicker type="min" limit={60} start={0} />
               <p className="text-4xl text-white">:</p>
-              <TimePicker type="sec" limit={60} start={0} />
+              <TimePicker type="sec" limit={59} start={0} />
             </div>
           </div>
           <div className="flex gap-4">

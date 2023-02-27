@@ -33,7 +33,7 @@ export default function GameEndModal(props: {
             <div className="flex flex-col">
               <p className="text-sm text-purple-400">Time left</p>
               <p className="text-3xl text-white">
-                {minutes}min {seconds}s
+                {minutes}min {seconds}s / {settings.min}min {settings.sec}s
               </p>
             </div>
             <div className="flex flex-col">
