@@ -51,7 +51,7 @@ export default function GameSettings(props: { onClose: () => void }) {
               href="/"
               className="rounded-lg border-[1px] border-neutral-700 p-2 px-5 text-white transition hover:bg-neutral-600"
             >
-              Back
+              Home
             </Link>
             <button
               onClick={() => props.onClose()}

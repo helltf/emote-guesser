@@ -19,69 +19,71 @@ export default function GameEndModal(props: {
   const seconds = props.currentTime % 60;
   const minutes = Math.floor(props.currentTime / 60);
   return (
-    <div className="fixed top-1/2 left-1/2 flex w-96 translate-x-[-50%] translate-y-[-50%] flex-col gap-5 rounded-md border-[1px] border-gray-600 bg-neutral-900 p-6">
-      <div className="flex justify-center">
-        <h2 className="text-4xl text-white">{title}</h2>
-      </div>
-      <div className="flex flex-col gap-7">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col">
-            <p className="text-sm text-purple-400">Channel</p>
-            <p className="text-3xl text-white">{settings.channelName}</p>
-          </div>
-          <div className="flex flex-col">
-            <p className="text-sm text-purple-400">Time left</p>
-            <p className="text-3xl text-white">
-              {minutes}min {seconds}s
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <p className="text-sm text-purple-400">Emotes guessed</p>
-            <p className="text-3xl text-white">
-              {props.emoteGuessed}/{props.emoteCount}
-            </p>
-          </div>
+    <div className="fixed top-1/2 left-1/2 w-96 translate-x-[-50%] translate-y-[-50%]">
+      <div className="flex animate-fade-in flex-col gap-5 rounded-md border-[1px] border-gray-600 bg-neutral-900 p-6">
+        <div className="flex justify-center">
+          <h2 className="text-4xl text-white">{title}</h2>
+        </div>
+        <div className="flex flex-col gap-7">
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-purple-400">Emotetypes</p>
-            <div className="flex gap-2">
-              <EndEmoteIcon
-                highlighted={settings.ffz}
-                icon={FfzIcon}
-              ></EndEmoteIcon>
-              <EndEmoteIcon
-                highlighted={settings.bttv}
-                icon={BttvIcon}
-              ></EndEmoteIcon>
-              <EndEmoteIcon
-                highlighted={settings.seventv}
-                icon={SevenTvIcon}
-              ></EndEmoteIcon>
+            <div className="flex flex-col">
+              <p className="text-sm text-purple-400">Channel</p>
+              <p className="text-3xl text-white">{settings.channelName}</p>
+            </div>
+            <div className="flex flex-col">
+              <p className="text-sm text-purple-400">Time left</p>
+              <p className="text-3xl text-white">
+                {minutes}min {seconds}s
+              </p>
+            </div>
+            <div className="flex flex-col">
+              <p className="text-sm text-purple-400">Emotes guessed</p>
+              <p className="text-3xl text-white">
+                {props.emoteGuessed}/{props.emoteCount}
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="text-sm text-purple-400">Emotetypes</p>
+              <div className="flex gap-2">
+                <EndEmoteIcon
+                  highlighted={settings.ffz}
+                  icon={FfzIcon}
+                ></EndEmoteIcon>
+                <EndEmoteIcon
+                  highlighted={settings.bttv}
+                  icon={BttvIcon}
+                ></EndEmoteIcon>
+                <EndEmoteIcon
+                  highlighted={settings.seventv}
+                  icon={SevenTvIcon}
+                ></EndEmoteIcon>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex justify-between">
-          <button
-            onClick={() => props.showNames()}
-            className="w-36 rounded-md bg-purple-600 text-lg text-white"
-          >
-            Show Names
-          </button>
-          <div className="flex flex-row justify-end gap-3">
-            <button className="rounded-md bg-purple-600">
-              <ShareIcon></ShareIcon>
-            </button>
+          <div className="flex justify-between">
             <button
-              onClick={() => props.openSettings()}
-              className="rounded-md bg-purple-600"
+              onClick={() => props.showNames()}
+              className="w-36 rounded-md bg-purple-600 text-lg text-white"
             >
-              <SettingsIcon></SettingsIcon>
+              Show Names
             </button>
-            <button
-              onClick={() => props.resetGame()}
-              className="rounded-md bg-purple-600"
-            >
-              <RestartIcon></RestartIcon>
-            </button>
+            <div className="flex flex-row justify-end gap-3">
+              <button className="rounded-md bg-purple-600">
+                <ShareIcon></ShareIcon>
+              </button>
+              <button
+                onClick={() => props.openSettings()}
+                className="rounded-md bg-purple-600"
+              >
+                <SettingsIcon></SettingsIcon>
+              </button>
+              <button
+                onClick={() => props.resetGame()}
+                className="rounded-md bg-purple-600"
+              >
+                <RestartIcon></RestartIcon>
+              </button>
+            </div>
           </div>
         </div>
       </div>
